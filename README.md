@@ -4,7 +4,7 @@
 ###3 Nodes Hadoop Cluster
 
 #####1. pull docker image
-
+```
 #wget http://download.openvz.org/template/precreated/ubuntu-14.04-x86_64.tar.gz
 #cat ubuntu-14.04-x86_64.tar.gz |docker import - ubuntu:base
 #docker run -it ubuntu:base /bin/bash
@@ -16,7 +16,7 @@
 #exit
 #docker ps -a //查看CONTAINER ID
 #docker commit CONTAINERID ubuntu:latest
-
+```
 #####2. clone github repository
 
 ```
