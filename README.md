@@ -21,6 +21,10 @@
 
 ```
 git clone https://github.com/stzonline/hadoop-cluster-docker
+
+创建jdk目录并下载 jdk-8u91-linux-x64.tar.gz到jdk文件下
+
+docker build -t="hadoop_spark_cluster:0.1.0" .
 ```
 
 #####3. create hadoop network
