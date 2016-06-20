@@ -7,6 +7,7 @@ WORKDIR /root
 # install openssh-server, openjdk and wget
 #RUN apt-get update && apt-get install -y openssh-server openjdk-7-jdk wget
 RUN apt-get update && apt-get install -y openssh-server wget
+RUN apt-get install -y openssh-server && apt-get install -y openssh-client
 
 # install hadoop 2.6.2
 RUN wget http://ftp.riken.jp/net/apache/hadoop/common/hadoop-2.6.2/hadoop-2.6.2.tar.gz && \
@@ -29,6 +30,8 @@ RUN wget http://archive.apache.org/dist/spark/spark-1.3.1/spark-1.3.1-bin-hadoop
 
 COPY config/* /tmp/
 COPY jdk/* /tmp/
+
+RUN chmod 777 /tmp/*
 
 RUN mkdir -p /usr/lib/jvm
 RUN tar zxvf /tmp/jdk-8u91-linux-x64.tar.gz -C /usr/lib/jvm	
