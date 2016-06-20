@@ -30,6 +30,7 @@ RUN wget http://archive.apache.org/dist/spark/spark-1.3.1/spark-1.3.1-bin-hadoop
 COPY config/* /tmp/
 COPY jdk/* /tmp/
 
+RUN mkdir -p /usr/lib/jvm
 RUN tar zxvf /tmp/jdk-8u91-linux-x64.tar.gz -C /usr/lib/jvm	
 	
 	
