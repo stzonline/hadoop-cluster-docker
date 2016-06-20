@@ -4,7 +4,8 @@
 #source /etc/profile
 #echo $JAVA_HOME
 
-service sshd start
+#service sshd start
+service ssh start
 
 #echo "172.17.0.3 master" >> /etc/hosts
 #echo "172.17.0.2 slave1" >> /etc/hosts
