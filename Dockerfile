@@ -23,9 +23,8 @@ RUN wget http://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.tgz && \
     rm scala-2.11.8.tgz
 	
 RUN wget http://archive.apache.org/dist/spark/spark-1.3.1/spark-1.3.1-bin-hadoop2.6.tgz && \
-	rm -rf /usr/local/spark  && \
-    tar -xzvf spark-1.3.1-bin-hadoop2.6.tgz && \
-    mv spark-1.3.1-bin-hadoop2.6 /usr/local/spark && \
+    tar -xzvf spark-1.3.1-bin-hadoop2.6.tgz  && \
+    mv spark-1.3.1-bin-hadoop2.6 spark-1.3.1  && \
     rm spark-1.3.1-bin-hadoop2.6.tgz
 
 COPY config/* /tmp/
@@ -43,8 +42,9 @@ ENV JRE_HOME=${JAVA_HOME}/jre
 ENV HADOOP_HOME=/usr/local/hadoop
 ENV CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
 ENV SCALA_HOME=/usr/lib/scala/scala-2.11.8
-ENV SPARK_HOME=/usr/local/spark
-ENV PATH=$PATH:${JAVA_HOME}/bin:$HADOOP_HOME/bin:$SCALA_HOME/bin:$SPARK_HOME/bin
+ENV SPARK_HOME=/etc/spark-1.3.1
+#ENV PATH=$PATH:${JAVA_HOME}/bin:$HADOOP_HOME/bin:$SCALA_HOME/bin:$SPARK_HOME/bin
+ENV PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$HADOOP_HOME/bin:$SCALA_HOME/bin:$SPARK_HOME/bin
 
 # ssh without key
 RUN ssh-keygen -t rsa -f ~/.ssh/id_rsa -P '' && \
@@ -65,7 +65,7 @@ RUN cp /tmp/ssh_config ~/.ssh/config && \
 	cp /tmp/yarn-env.sh /usr/local/hadoop/etc/hadoop/yarn-env.sh && \
 	cp /tmp/slaves $HADOOP_HOME/etc/hadoop/slaves && \
     cp /tmp/spark-env.sh $SPARK_HOME/conf/spark-env.sh && \
-	cp /tmp/slaves $SPARK_HOME/conf/slaves
+	cp /tmp/spark_slaves $SPARK_HOME/conf/slaves
 
 
 
