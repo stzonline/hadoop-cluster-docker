@@ -15,7 +15,7 @@ $HADOOP_HOME/sbin/start-yarn.sh
 
 $SPARK_HOME/sbin/start-all.sh
 
-#jps
+jps
 
 #tail -10f /home/hadoop/hadoop-2.6.2/etc/hadoop/start.sh
 #tail -100f /opt/hadoop-1.2.1/conf/end.txt
